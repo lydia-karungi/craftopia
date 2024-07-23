@@ -2,7 +2,7 @@
 // Database connection settings
 $servername = "127.0.0.1";
 $username = "root"; // replace with your MySQL username
-$password = "simple@123"; // replace with your MySQL password
+$password = "Shashudine@1"; // replace with your MySQL password
 $dbname = "craftopia";
 
 // Create connection
