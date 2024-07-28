@@ -15,30 +15,66 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (shopByCategoryContainer) shopByCategoryContainer.innerHTML = '';
                 if (productList) productList.innerHTML = '';
 
-                products.forEach(product => {
-                    const productCard = `
+                // Limit number of products displayed
+                const bestSellersToShow = products.slice(0, 4); // Show only 4 products
+                const shopByCategoryToShow = products.slice(0, 4); // Show only 4 products
+
+                function truncateDescription(description, maxLines = 2) {
+                    // Remove HTML tags
+                    const textOnly = description.replace(/<\/?[^>]+(>|$)/g, "");
+                    // Remove "About this item" text
+                    const cleanedText = textOnly.replace("About this item", "").trim();
+                    const words = cleanedText.split(' ');
+                    let truncated = '';
+                    let lineCount = 0;
+                    let lineHeight = 0;
+
+                    for (let word of words) {
+                        truncated += word + ' ';
+                        lineHeight = truncated.split('\n').length;
+                        if (lineHeight > lineCount) {
+                            lineCount = lineHeight;
+                            if (lineCount > maxLines) break;
+                        }
+                    }
+                    return truncated.trim() + '...';
+                }
+
+                function createProductCard(product) {
+                    const truncatedDescription = truncateDescription(product.description);
+                    return `
                         <div class="content-card">
-                            <img src="${product.image}" alt="${product.name}" class="redirect-image">
+                            <img src="${product.image}" alt="${product.name}" class="redirect-image" data-id="${product.id}">
                             <div class="card-info">
                                 <h4>${product.name}</h4>
-                                <p style="color: #bf2e1a;">${product.description}</p>
-                                <h4>$${product.price}</h4>
+                                <p style="text-align: left;">${truncatedDescription} <a href="product_detail.php?id=${product.id}" style="color: #bf2e1a; text-decoration: none;">for more info</a></p>
+                                <p style="text-align: left; color: #bf2e1a;">$${product.price}</p>
+                                <button class="add-to-cart-btn" data-product='${JSON.stringify(product)}'>Add to Cart</button>
                             </div>
-                            <button class="add-to-cart-btn" data-product='${JSON.stringify(product)}'>Add to Cart</button>
                         </div>
                     `;
+                }
 
-                    if (bestSellersContainer) bestSellersContainer.innerHTML += productCard;
-                    if (shopByCategoryContainer) shopByCategoryContainer.innerHTML += productCard;
-                    if (productList) productList.innerHTML += productCard;
+                bestSellersToShow.forEach(product => {
+                    if (bestSellersContainer) bestSellersContainer.innerHTML += createProductCard(product);
                 });
+
+                shopByCategoryToShow.forEach(product => {
+                    if (shopByCategoryContainer) shopByCategoryContainer.innerHTML += createProductCard(product);
+                });
+
+                if (productList) {
+                    products.forEach(product => {
+                        productList.innerHTML += createProductCard(product);
+                    });
+                }
 
                 // Add event listeners for dynamically added cart buttons
                 document.querySelectorAll('.add-to-cart-btn').forEach(button => {
                     button.addEventListener('click', function() {
                         const product = JSON.parse(this.getAttribute('data-product'));
                         addToCart(product);
-                        window.location.href = 'cart.html'; // Redirect to the cart page
+                        window.location.href = 'cart.php'; // Redirect to the cart page
                     });
                 });
 
@@ -46,8 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.querySelectorAll('.redirect-image').forEach(image => {
                     image.style.cursor = 'pointer'; // Optional: Change cursor on hover
                     image.addEventListener('click', function() {
-                        // Redirect user to the login page when the image is clicked
-                        window.location.href = 'login.html';
+                        const productId = this.getAttribute('data-id');
+                        window.location.href = `product_detail.php?id=${productId}`;
                     });
                 });
             })
@@ -102,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Construct the URL with search parameters
                 const queryParams = `?flowerName=${encodeURIComponent(flowerName)}&price=${encodeURIComponent(price)}`;
                 // Redirect to the shop page with parameters
-                window.location.href = `shop.html${queryParams}`;
+                window.location.href = `shop.php${queryParams}`;
             } else {
                 // Alert user if any field is empty
                 alert('Please enter both flower name and price range.');
@@ -114,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (shopBtn) {
         document.querySelectorAll('#shopFlowers').forEach(button => {
             button.addEventListener('click', function() {
-                window.location.href = 'shop.html';
+                window.location.href = 'shop.php';
             });
         });
     }
@@ -204,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 cart.splice(itemIndex, 1);
                 localStorage.setItem('cart', JSON.stringify(cart));
                 updateCart();
+                displayMessage(`${name} has been removed from your cart.`);
             } else if (event.target.classList.contains('increase-quantity')) {
                 const name = event.target.getAttribute('data-name');
                 const item = cart.find(item => item.name === name);
@@ -223,8 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (checkoutBtn) {
             checkoutBtn.addEventListener('click', function() {
-                alert('Proceeding to checkout...');
-                // Implement the checkout functionality here
+                window.location.href = 'checkout.php'; // Redirect to the checkout page
             });
         }
 

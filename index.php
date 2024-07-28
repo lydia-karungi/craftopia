@@ -1,3 +1,12 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,59 +33,64 @@
         <!--Main menu-->
         <div class="main-menu">
             <div class="logo">
-                <a href="index.html">Craftopia</a>
+                <a href="index.php">Craftopia</a>
             </div>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="cart.html">Cart</a></li>
+                <?php if ($isLoggedIn): ?>
+                    <li><a href="logout.php">Logout</a></li>
+                <?php else: ?>
+                    <li><a href="login.html">Login</a></li>
+                <?php endif; ?>
+                <li><a href="cart.php">Cart</a></li>
             </ul>
         </div>
 
         <!--Navigation bar-->
         <nav class="nav-bar">
             <ul>
-                <li><a href="flower_type.html">Our Shop</a>
+                <li><a href="flower_type.php">Our Shop</a>
                     <ul class="dropdown">
-                        <li><a href="kitchen.html">Kitchen</a></li>
-                        <li><a href="bedroom.html">Bedroom</a></li>
-                        <li><a href="outdoor.html">Outdoor</a></li>
-                        <li><a href="jewellery.html">Jewellery</a></li>
+                        <li><a href="kitchen.php">Kitchen</a></li>
+                        <li><a href="bedroom.php">Bedroom</a></li>
+                        <li><a href="outdoor.php">Outdoor</a></li>
+                        <li><a href="jewellery.php">Jewellery</a></li>
                     </ul>
                 </li>
-                <li><a href="collections.html">Collections</a></li>
-                <li><a href="gifts.html">Gifts</a>
+                <li><a href="collections.php">Collections</a></li>
+                <li><a href="gifts.php">Gifts</a>
                     <ul class="dropdown">
-                        <li><a href="gifts.html">Gifts for her</a></li>
-                        <li><a href="gifts.html">Gifts for him</a></li>
-                        <li><a href="gifts.html">Wedding Gifts</a></li>
-                        <li><a href="gifts.html">Kids Gifts</a></li>
-                        <li><a href="gifts.html">Animal Lover Gifts</a></li>
+                        <li><a href="gifts.php">Gifts for her</a></li>
+                        <li><a href="gifts.php">Gifts for him</a></li>
+                        <li><a href="gifts.php">Wedding Gifts</a></li>
+                        <li><a href="gifts.php">Kids Gifts</a></li>
+                        <li><a href="gifts.php">Animal Lover Gifts</a></li>
                     </ul>
                 </li>
-                <li><a href="kitchen.html">Kitchen</a></li>
-                <li><a href="jewellery.html">Jewellery</a>
+                <li><a href="kitchen.php">Kitchen</a></li>
+                <li><a href="jewellery.php">Jewellery</a>
                     <ul class="dropdown">
-                        <li><a href="earrings.html">Earrings</a></li>
-                        <li><a href="necklaces.html">Necklaces</a></li>
-                        <li><a href="ringsandpins.html">Rings and Pins</a></li>
-                        <li><a href="storage.html">Jewellery Storage</a></li>
-                        <li><a href="braceletsandcuffs.html">Bracelets and Cuffs</a></li>
+                        <li><a href="earrings.php">Earrings</a></li>
+                        <li><a href="necklaces.php">Necklaces</a></li>
+                        <li><a href="ringsandpins.php">Rings and Pins</a></li>
+                        <li><a href="storage.php">Jewellery Storage</a></li>
+                        <li><a href="braceletsandcuffs.php">Bracelets and Cuffs</a></li>
                     </ul>
                 </li>
-                <li><a href="outdoor.html">Outdoor</a></li>
-                <li><a href="bedroom.html">Bedroom</a>
+                <li><a href="outdoor.php">Outdoor</a></li>
+                <li><a href="bedroom.php">Bedroom</a>
                     <ul class="dropdown">
-                        <li><a href="bedroom.html">Duvet Sets</a></li>
-                        <li><a href="bedroom.html">Bed Throws</a></li>
-                        <li><a href="bedroom.html">Pillows</a></li>
+                        <li><a href="bedroom.php">Duvet Sets</a></li>
+                        <li><a href="bedroom.php">Bed Throws</a></li>
+                        <li><a href="bedroom.php">Pillows</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
     </div>
+
     <!--Banner image-->
     <main>
         <div class="banner">
@@ -128,7 +142,7 @@
             </div>
             <div class="content-card">
                 <h4>Very happy with the bracelet!</h4>
-                <p>“This was a Christmas gift for our daughter-in-law. She was thrilled to receive it! She enjoys wearing multiple bracelets; we look forward to seeing her mis with this one!” </p>
+                <p>“This was a Christmas gift for our daughter-in-law. She was thrilled to receive it! She enjoys wearing multiple bracelets; we look forward to seeing her mix with this one!” </p>
                 <p>Sarah Snailum</p>
             </div>
         </div>
@@ -153,9 +167,9 @@
                         <p>Phone: 07 4779 1243</p>
                         <p>fax: 4779 1244</p>
                         <p>address: 223 queen St in Brisbane, Queensland</p>
-                        <p><a href="mailto:: craftopia@craftopiamail.com.au"
+                        <p><a href="mailto:craftopia@craftopiamail.com.au"
                                 style="text-decoration: none; color: #aaa;">email:
-                                : craftopia@craftopiamail.com.au</a></p>
+                                craftopia@craftopiamail.com.au</a></p>
                     </div>
                 </td>
                 <td class="footer-column">
@@ -170,7 +184,7 @@
     </footer>
 
     <div class="copyright-outside-footer">
-        &copy; COPYRIGHT 2024,CRAFTOPIA INC
+        &copy; COPYRIGHT 2024, CRAFTOPIA INC
     </div>
 
 </body>
