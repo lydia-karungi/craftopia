@@ -28,9 +28,9 @@
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about.php">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
                 <li><a href="login.html">Login</a></li>
-                <li><a href="cart.html">Cart</a></li>
+                <li><a href="cart.php">Cart</a></li>
             </ul>
         </div>
 
@@ -45,7 +45,7 @@
                         <li><a href="jewellery.php">Jewellery</a></li>
                     </ul>
                 </li>
-                <li><a href="collections.html">Collections</a></li>
+                <li><a href="collections.php">Collections</a></li>
                 <li><a href="gifts.html">Gifts</a>
                     <ul class="dropdown">
                         <li><a href="gifts.html">Gifts for her</a></li>
@@ -55,22 +55,22 @@
                         <li><a href="gifts.html">Animal Lover Gifts</a></li>
                     </ul>
                 </li>
-                <li><a href="kitchen.html">Kitchen</a></li>
-                <li><a href="jewellery.html">Jewellery</a>
+                <li><a href="kitchen.php">Kitchen</a></li>
+                <li><a href="jewellery.php">Jewellery</a>
                     <ul class="dropdown">
-                        <li><a href="earrings.html">Earrings</a></li>
-                        <li><a href="necklaces.html">Necklaces</a></li>
-                        <li><a href="ringsandpins.html">Rings and Pins</a></li>
-                        <li><a href="storage.html">Jewellery Storage</a></li>
-                        <li><a href="braceletsandcuffs.html">Bracelets and Cuffs</a></li>
+                        <li><a href="earrings.php">Earrings</a></li>
+                        <li><a href="necklaces.php">Necklaces</a></li>
+                        <li><a href="ringsandpins.php">Rings and Pins</a></li>
+                        <li><a href="storage.php">Jewellery Storage</a></li>
+                        <li><a href="braceletsandcuffs.php">Bracelets and Cuffs</a></li>
                     </ul>
                 </li>
-                <li><a href="outdoor.html">Outdoor</a></li>
-                <li><a href="bedroom.html">Bedroom</a>
+                <li><a href="outdoor.php">Outdoor</a></li>
+                <li><a href="bedroom.php">Bedroom</a>
                     <ul class="dropdown">
-                        <li><a href="bedroom.html">Duvet Sets</a></li>
-                        <li><a href="bedroom.html">Bed Throws</a></li>
-                        <li><a href="bedroom.html">Pillows</a></li>
+                        <li><a href="bedroom.php">Duvet Sets</a></li>
+                        <li><a href="bedroom.php">Bed Throws</a></li>
+                        <li><a href="bedroom.php">Pillows</a></li>
                     </ul>
                 </li>
             </ul>
