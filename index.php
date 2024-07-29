@@ -51,7 +51,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
         <!--Navigation bar-->
         <nav class="nav-bar">
             <ul>
-                <li><a href="flower_type.php">Our Shop</a>
+                <li><a href="collections.php">Our Shop</a>
                     <ul class="dropdown">
                         <li><a href="kitchen.php">Kitchen</a></li>
                         <li><a href="bedroom.php">Bedroom</a></li>
