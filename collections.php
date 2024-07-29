@@ -2,13 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Craftopia - Kitchen</title>
+    <title>Craftopia</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -76,8 +75,9 @@
             </ul>
         </nav>
     </div>
+    <!--Banner image-->
+    <main data-category="collections">
 
-    <main data-category="kitchen">
         <div class="main-content">
             <aside class="sidebar">
                 <h3>Filter by</h3>
@@ -88,13 +88,17 @@
                         <input type="number" id="maxPrice" name="maxPrice" placeholder="Max Price">
                     </div>
                     <div class="filter-section">
-                        <h4>Category</h4>
+                        <h4>Collection</h4>
                         <select id="category" name="category">
                             <option value="">All</option>
-                            <option value="kitchen">Kitchen</option>
-                            <option value="bedroom">Bedroom</option>
-                            <option value="outdoor">Outdoor</option>
-                            <option value="jewellery">Jewellery</option>
+                            <option value="Holiday Specials">Holiday Specials</option>
+                            <option value="Winter Collection">Winter Collection<~~/option>
+                            <option value="Summer Collection">Summer Collection</option>
+                            <option value="Bath">Bath</option>
+                            <option value="Laundry">Laundry</option>
+                            <option value="Best Sellers">Best Sellers</option>
+                            <option value="Customer Favorites">Customer Favorites</option>
+                            <option value="Discounted Items">Discounted Items</option>
                         </select>
                     </div>
                     <div class="filter-section">
@@ -113,8 +117,29 @@
                 <!-- Products will be dynamically inserted here -->
             </div>
         </div>
-    </main>
 
+        <div class="section-header2">
+            <h1>What are customers saying</h1>
+        </div>
+
+        <div class="content-container">
+            <div class="content-card">
+                <h4>So adorable!</h4>
+                <p>“This is truly such a beautiful fair trade product for quite a reasonable price. I love the way this garland looks on my mantle, hanging over my stone fireplace. I am going to buy one for the office because it brings me so much joy.” </p>
+                <p>Suzette Marechal</p>
+            </div>
+            <div class="content-card">
+                <h4>Short Wool Booties</h4>
+                <p>"I live in a cold Winter State. I am a street shoe size 7.5 - 8. These are very warm, fit great and could possibly fit size 10 foot. The ankle area has not stretched out and stays snug to my ankle. These are very well made and the yarn is durable. I plan to” </p>
+                <p>DW Booker</p>
+            </div>
+            <div class="content-card">
+                <h4>Very happy with the bracelet!</h4>
+                <p>“This was a Christmas gift for our daughter-in-law. She was thrilled to receive it! She enjoys wearing multiple bracelets; we look forward to seeing her mis with this one!” </p>
+                <p>Sarah Snailum</p>
+            </div>
+        </div>
+    </main>
     <script src="js/florist.js"></script>
     <!--Footer-->
     <footer>
@@ -135,9 +160,7 @@
                         <p>Phone: 07 4779 1243</p>
                         <p>fax: 4779 1244</p>
                         <p>address: 223 queen St in Brisbane, Queensland</p>
-                        <p><a href="mailto:craftopia@craftopiamail.com.au"
-                                style="text-decoration: none; color: #aaa;">email:
-                                craftopia@craftopiamail.com.au</a></p>
+                        <p><a href="mailto:: craftopia@craftopiamail.com.au" style="text-decoration: none; color: #aaa;">email: craftopia@craftopiamail.com.au</a></p>
                     </div>
                 </td>
                 <td class="footer-column">
@@ -152,7 +175,7 @@
     </footer>
 
     <div class="copyright-outside-footer">
-        &copy; COPYRIGHT 2024, CRAFTOPIA INC
+        &copy; COPYRIGHT 2024,CRAFTOPIA INC
     </div>
 
 </body>
