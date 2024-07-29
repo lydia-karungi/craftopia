@@ -36,15 +36,15 @@ $isLoggedIn = isset($_SESSION['user_id']);
                 <a href="index.html">Craftopia</a>
             </div>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="about.php">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
                 <?php if ($isLoggedIn): ?>
                     <li><a href="logout.php">Logout</a></li>
                 <?php else: ?>
                 <li><a href="login.html">Login</a></li>
                 <?php endif; ?>
-                <li><a href="cart.html">Cart</a></li>
+                <li><a href="cart.php">Cart</a></li>
             </ul>
         </div>
 

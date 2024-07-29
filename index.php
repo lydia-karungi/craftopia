@@ -38,7 +38,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about.php">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
                 <?php if ($isLoggedIn): ?>
                     <li><a href="logout.php">Logout</a></li>
                 <?php else: ?>

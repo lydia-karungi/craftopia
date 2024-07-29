@@ -26,14 +26,14 @@
         <!--Main menu-->
         <div class="main-menu">
             <div class="logo">
-                <a href="index.html">Craftopia</a>
+                <a href="index.php">Craftopia</a>
             </div>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About Us</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
                 <li><a href="login.html">Login</a></li>
-                <li><a href="cart.html">Cart</a></li>
+                <li><a href="cart.php">Cart</a></li>
             </ul>
         </div>
 

@@ -37,12 +37,12 @@
         <!--Navigation bar-->
         <nav class="nav-bar">
             <ul>
-                <li><a href="flower_type.html">Our Shop</a>
+                <li><a href="collections.php">Our Shop</a>
                     <ul class="dropdown">
-                        <li><a href="kitchen.html">Kitchen</a></li>
-                        <li><a href="bedroom.html">Bedroom</a></li>
-                        <li><a href="outdoor.html">Outdoor</a></li>
-                        <li><a href="jewellery.html">Jewellery</a></li>
+                        <li><a href="kitchen.php">Kitchen</a></li>
+                        <li><a href="bedroom.php">Bedroom</a></li>
+                        <li><a href="outdoor.php">Outdoor</a></li>
+                        <li><a href="jewellery.php">Jewellery</a></li>
                     </ul>
                 </li>
                 <li><a href="collections.html">Collections</a></li>
