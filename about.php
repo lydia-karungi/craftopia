@@ -1,3 +1,12 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +19,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
         rel="stylesheet">
-
 </head>
 
 <body>
@@ -18,11 +26,9 @@
         NEW: March Special - 10% off for any web order!!
     </header>
 
-
     <div class="header-container">
          <!-- Hamburger Menu Button -->
          <button class="hamburger" id="hamburger">&#9776;</button>
-
 
         <!--Main menu-->
         <div class="main-menu">
@@ -33,7 +39,11 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
+                <?php if ($isLoggedIn): ?>
+                    <li><a href="logout.php">Logout</a></li>
+                <?php else: ?>
                 <li><a href="login.html">Login</a></li>
+                <?php endif; ?>
                 <li><a href="cart.html">Cart</a></li>
             </ul>
         </div>
@@ -80,6 +90,7 @@
             </ul>
         </nav>
     </div>
+
     <!--Banner image-->
     <main>
         <div class="banner">
