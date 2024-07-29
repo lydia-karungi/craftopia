@@ -4,9 +4,22 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $isLoggedIn = isset($_SESSION['user_id']);
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<link rel="stylesheet" href="css/style.css">
+    <title>Craftopia</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+
 </head>
+
+<body>
 <div class="header-container">
     <!-- Hamburger Menu Button -->
     <button class="hamburger" id="hamburger">&#9776;</button>
@@ -71,3 +84,5 @@ $isLoggedIn = isset($_SESSION['user_id']);
         </ul>
     </nav>
 </div>
+            </body>
+            </html>
