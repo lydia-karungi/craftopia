@@ -4,7 +4,9 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $isLoggedIn = isset($_SESSION['user_id']);
 ?>
-
+<head>
+<link rel="stylesheet" href="css/style.css">
+</head>
 <div class="header-container">
     <!-- Hamburger Menu Button -->
     <button class="hamburger" id="hamburger">&#9776;</button>
