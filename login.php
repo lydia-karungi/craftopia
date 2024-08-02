@@ -33,20 +33,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($email && $password) {
         // Prepare and bind
-        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ? AND password = ?");
-        $stmt->bind_param("ss", $email, $password);
+        $stmt = $conn->prepare("SELECT id, password FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
 
         // Execute the query
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // User exists, login successful
+            // User exists, verify password
             $row = $result->fetch_assoc();
-            session_start();
-            $_SESSION['user_id'] = $row['id'];
-            // Output JSON response
-            echo json_encode(["success" => true, "message" => "Login successful!"]);
+            if (password_verify($password, $row['password'])) {
+                // Password is correct, login successful
+                session_start();
+                $_SESSION['user_id'] = $row['id'];
+                echo json_encode(["success" => true, "message" => "Login successful!"]);
+            } else {
+                // Password is incorrect
+                echo json_encode(["success" => false, "message" => "Invalid email or password!"]);
+            }
         } else {
             // User does not exist, login failed
             echo json_encode(["success" => false, "message" => "Invalid email or password!"]);
