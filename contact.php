@@ -18,7 +18,6 @@
         NEW: March Special - 10% off for any web order!!
     </header>
 
-
     <div class="header-container">
          <!-- Hamburger Menu Button -->
          <button class="hamburger" id="hamburger">&#9776;</button>
@@ -27,21 +26,21 @@
         <!--Main menu-->
         <div class="main-menu">
             <div class="logo">
-                <a href="index.html">Craftopia</a>
+                <a href="index.php">Craftopia</a>
             </div>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About Us</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
                 <li><a href="login.html">Login</a></li>
-                <li><a href="cart.html">Cart</a></li>
+                <li><a href="cart.php">Cart</a></li>
             </ul>
         </div>
 
         <!--Navigation bar-->
         <nav class="nav-bar">
             <ul>
-                <li><a href="collections.html">Our Shop</a>
+                <li><a href="flower_type.html">Our Shop</a>
                     <ul class="dropdown">
                         <li><a href="kitchen.html">Kitchen</li>
                         <li><a href="bedroom.html">Bedroom</a></li>
@@ -85,33 +84,40 @@
         <div class="banner">
             <img src="product_images/banner2.jpg" alt="banner">
             <div class="cta">
-                <h1>Hi, we're Busy Bee</h1>
-                <p>We're a modern floral brand that connects people to farm-fresh flowers and the partners who grow
-                    them. We put the Bouq in Bouquet.</p>
-                <p>P.S. - We are very happy to have you here, cheers!!!</p>
+                <h1>Announcements</h1>
+                <p>In response to COVID 19, we do not have readymade flowers available for general walk-in
+                    trade. Please call or use our website for make to order.</p>
+                <p>Visit our help center for articles or submit a ticket.</p>
             </div>
         </div>
-
+   
     <!--What are customers saying-->
-    <div class="section-header1">
-        <h1>Our mission & Goal</h1>
-    </div>
-
-    <div class="content-container">
+    <div class="contact-cards-container">
         <div class="content-card">
-            <h4>Mission</h4>
-            <p> "We believe kindness is always in season. We believe the simple gesture of gifting flowers can
-                transform your day, rekindle an old connection, or spark a new one. That's why we're on a mission to
-                transform the floral industry - delivering longer-lasting, responsible sourced flowers with less waste
-                and more smiles." </p>
+            <h4>Submit a Ticket</h4>
+            <p>If you have any issues or inquiries, please fill out the form below, and our team will get back to you as soon as possible.</p>
+            <form id="ticketForm">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="successMessage" style="display: none; color: green;">Your ticket has been submitted successfully!</div>
+        </div>
+        
+        <div class="content-card">
+            <h4>Customer Service</h4>
+            <p> Our philosophy begins and ends with a marketplace that provides the best possible customer service. By
+                taking out the middleman, we have also taken out the bureaucracy. All florists in the marketplace must
+                abide by the Florist's Rules of Conduct. For any questions, comments, or concerns about your order, we
+                advise you to contact the local florist you have placed your order with. </p>
         </div>
         <div class="content-card">
-            <h4>Goal</h4>
-            <p> "To create an engaging and user-friendly website that showcases our wide range of floral products and
-                services, attracts new customers, and provides a seamless shopping experience for our existing
-                customers. The website should reflect our brand's personality, highlight our unique selling points, and
-                ultimately drive sales by encouraging visitors to make purchases online or visit our physical store."
-            </p>
+            <h4>Contact Information </h4>
+            <p>Phone: 07 4779 1243</p>
+            <p>fax: 4779 1244</p>
+            <p>223 Bolsover St in Cairville, Queensland</p>
+            <p><a href="mailto:: busybeeflorist@busybeemail.com.au">busybeeflorist@busybeemail.com.au</a></p>
         </div>
     </div>
     </div>
