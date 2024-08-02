@@ -17,8 +17,8 @@
             <img src="product_images/banner2.jpg" alt="banner">
             <div class="cta">
                 <h1>Announcements</h1>
-                <p>In response to COVID 19, we do not have readymade flowers available for general walk-in trade. Please call or use our website for make to order.</p>
-                <p>Visit our help center for articles or submit a ticket.</p>
+                <p>We are currently experiencing high demand for our handcrafted products. To ensure the best quality and timely delivery, please place your orders in advance.</p>
+                <p>As part of our commitment to sustainability, Craftopia is now offering eco-friendly packaging options. Visit our website to learn more about our green initiatives and how you can contribute.</p>
             </div>
         </div>
         <div class="contact-cards-container">
@@ -35,14 +35,15 @@
             </div>
             <div class="content-card">
                 <h4>Customer Service</h4>
-                <p>Our philosophy begins and ends with a marketplace that provides the best possible customer service. By taking out the middleman, we have also taken out the bureaucracy. All florists in the marketplace must abide by the Florist's Rules of Conduct. For any questions, comments, or concerns about your order, we advise you to contact the local florist you have placed your order with.</p>
+                <p>If you have any issues or inquiries, please fill out the form below, and our team will get back to you as soon as possible.</p>
             </div>
+
             <div class="content-card">
                 <h4>Contact Information</h4>
                 <p>Phone: 07 4779 1243</p>
                 <p>Fax: 4779 1244</p>
-                <p>223 Bolsover St in Cairville, Queensland</p>
-                <p><a href="mailto:busybeeflorist@busybeemail.com.au">busybeeflorist@busybeemail.com.au</a></p>
+                <p>223 Queen St, Brisbane, Queensland</p>
+                <p>Mail:<a href="mailto:craftopia@craftopiamail.com.au">craftopia@craftopiamail.com.au</a></p>
             </div>
         </div>
     </main>

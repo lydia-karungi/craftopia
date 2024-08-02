@@ -16,94 +16,33 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        NEW: November Special - 10% off for any web order!!
+        <?php include 'header.php'; ?>
     </header>
 
-    <div class="header-container">
-        <!-- Hamburger Menu Button -->
-        <button class="hamburger" id="hamburger">&#9776;</button>
-
-        <!--Main menu-->
-        <div class="main-menu">
-            <div class="logo">
-                <a href="index.php">Craftopia</a>
-            </div>
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="about.php">About Us</a></li>
-                <li><a href="contact.php">Contact Us</a></li>
-                <?php if ($isLoggedIn): ?>
-                    <li><a href="logout.php">Logout</a></li>
-                <?php else: ?>
-                    <li><a href="login.html">Login</a></li>
-                <?php endif; ?>
-                <li><a href="cart.php">Cart</a></li>
-            </ul>
-        </div>
-
-        <!--Navigation bar-->
-        <nav class="nav-bar">
-            <ul>
-                <li><a href="collections.php">Our Shop</a>
-                    <ul class="dropdown">
-                        <li><a href="kitchen.php">Kitchen</a></li>
-                        <li><a href="bedroom.php">Bedroom</a></li>
-                        <li><a href="outdoor.php">Outdoor</a></li>
-                        <li><a href="jewellery.php">Jewellery</a></li>
-                    </ul>
-                </li>
-                <li><a href="collections.php">Collections</a></li>
-                <li><a href="gifts.php">Gifts</a>
-                    <ul class="dropdown">
-                        <li><a href="gifts.php">Gifts for her</a></li>
-                        <li><a href="gifts.php">Gifts for him</a></li>
-                        <li><a href="gifts.php">Wedding Gifts</a></li>
-                        <li><a href="gifts.php">Kids Gifts</a></li>
-                        <li><a href="gifts.php">Animal Lover Gifts</a></li>
-                    </ul>
-                </li>
-                <li><a href="kitchen.php">Kitchen</a></li>
-                <li><a href="jewellery.php">Jewellery</a>
-                    <ul class="dropdown">
-                        <li><a href="earrings.php">Earrings</a></li>
-                        <li><a href="necklaces.php">Necklaces</a></li>
-                        <li><a href="ringsandpins.php">Rings and Pins</a></li>
-                        <li><a href="storage.php">Jewellery Storage</a></li>
-                        <li><a href="braceletsandcuffs.php">Bracelets and Cuffs</a></li>
-                    </ul>
-                </li>
-                <li><a href="outdoor.php">Outdoor</a></li>
-                <li><a href="bedroom.php">Bedroom</a>
-                    <ul class="dropdown">
-                        <li><a href="bedroom.php">Duvet Sets</a></li>
-                        <li><a href="bedroom.php">Bed Throws</a></li>
-                        <li><a href="bedroom.php">Pillows</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </div>
-
-    <!--Banner image-->
+    <!-- Banner Image with November Discount -->
     <main>
-    <div class="banner">
-        <img src="product_images/karim-manjra-cW3nDFVpi10-unsplash.jpg" alt="banner">
-        <div class="cta">
-            <h1>Discover Unique Crafts</h1>
-            <h2>Handmade, Authentic, and One-of-a-Kind</h2>
-            <p>Explore our exclusive collection of artisanal crafts, perfect for any occasion. Whether you're looking for a special gift or something unique for your home, we have something for everyone.</p>
-            <a href="collections.php" class="cta-button">Shop Now</a>
+        <div class="banner">
+            <img src="product_images/karim-manjra-cW3nDFVpi10-unsplash.jpg" alt="banner">
+            <div class="banner-content">
+                <div class="discount-info">
+                    <h2>November Special!</h2>
+                    <p>Enjoy 10% off on all online orders throughout November. Don't miss out on our exclusive deals!</p>
+                </div>
+                <div class="cta">
+                    <h1>Discover Unique Crafts</h1>
+                    <h2>Handmade, Authentic, and One-of-a-Kind</h2>
+                    <p>Explore our exclusive collection of artisanal crafts, perfect for any occasion. Whether you're looking for a special gift or something unique for your home, we have something for everyone.</p>
+                    <a href="collections.php" class="cta-button">Shop Now</a>
+                </div>
+            </div>
         </div>
-    </div>
 
-        <!--Best sellers-->
+        <!-- Best Sellers -->
         <div class="section-header1">
             <h1>Best Sellers</h1>
         </div>
@@ -112,77 +51,48 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <!-- Products will be dynamically inserted here -->
         </div>
 
-        <!--Shop by category-->
+        <!-- Shop by Category -->
         <div class="section-header2">
             <h1>Shop by Category</h1>
         </div>
 
         <div class="content-container" id="shop-by-category">
-            <!-- Products will be dynamically inserted here -->
+            <!-- Categories will be dynamically inserted here -->
         </div>
 
-        <!--What are customers saying-->
+        <!-- What Are Customers Saying -->
         <div class="section-header2">
-            <h1>What are customers saying </h1>
+            <h1>What Are Customers Saying</h1>
         </div>
 
-        <div class="content-container">
-            <div class="content-card">
-                <h4>So adorable!</h4>
-                <p>“This is truly such a beautiful fair trade product for quite a reasonable price. I love the way this garland looks on my mantle, hanging over my stone fireplace. I am going to buy one for the office because it brings me so much joy.” </p>
-                <p>Suzette Marechal</p>
+        <div class="review-carousel">
+            <div class="carousel-container" id="carousel-container">
+                <!-- Review items will be dynamically inserted here -->
             </div>
-            <div class="content-card">
-                <h4>Short Wool Booties</h4>
-                <p>"I live in a cold Winter State. I am a street shoe size 7.5 - 8. These are very warm, fit great and could possibly fit size 10 foot. The ankle area has not stretched out and stays snug to my ankle. These are very well made and the yarn is durable. I plan to” </p>
-                <p>DW Booker</p>
-            </div>
-            <div class="content-card">
-                <h4>Very happy with the bracelet!</h4>
-                <p>“This was a Christmas gift for our daughter-in-law. She was thrilled to receive it! She enjoys wearing multiple bracelets; we look forward to seeing her mix with this one!” </p>
-                <p>Sarah Snailum</p>
-            </div>
+
+            <!-- Carousel controls -->
+            <a class="carousel-control-prev" href="javascript:void(0);" id="prev">&#10094;</a>
+            <a class="carousel-control-next" href="javascript:void(0);" id="next">&#10095;</a>
+        </div>
+
+        <!-- Review Submission Form -->
+        <div class="review-form-container">
+            <h2>Leave a Review</h2>
+            <form id="reviewForm">
+                <input type="text" id="reviewerName" name="name" placeholder="Your name" required>
+                <input type="number" id="reviewRating" name="rating" min="1" max="5" placeholder="Rating (1-5)" required>
+                <textarea id="reviewText" name="review" rows="4" placeholder="Your review" required></textarea>
+                <button type="submit">Submit Review</button>
+                <div class="feedback" id="reviewFeedback"></div>
+            </form>
         </div>
     </main>
-    <script src="js/florist.js"></script>
-    <!--Footer-->
-    <footer>
-        <table>
-            <tr>
-                <td class="footer-column">
-                    <h1>Important Links</h1>
-                    <div class="social-media">
-                        <p>Our Shop</p>
-                        <p>Collections</p>
-                        <p>Gifts</p>
-                        <p>About Us</p>
-                    </div>
-                </td>
-                <td class="footer-column">
-                    <h1>Contact Us</h1>
-                    <div class="social-media">
-                        <p>Phone: 07 4779 1243</p>
-                        <p>fax: 4779 1244</p>
-                        <p>address: 223 queen St in Brisbane, Queensland</p>
-                        <p><a href="mailto:craftopia@craftopiamail.com.au"
-                                style="text-decoration: none; color: #aaa;">email:
-                                craftopia@craftopiamail.com.au</a></p>
-                    </div>
-                </td>
-                <td class="footer-column">
-                    <h1>Trading hours</h1>
-                    <div class="social-media">
-                        <p>Mon – Fri : 9.00 am to 4.00 pm</p>
-                        <p>Saturday – Sunday : 9.00 am to 12.00 pm</p>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </footer>
 
-    <div class="copyright-outside-footer">
-        &copy; COPYRIGHT 2024, CRAFTOPIA INC
-    </div>
+    <script src="js/script.js"></script>
+    <!-- Footer -->
+    <footer>
+        <?php include 'footer.php'; ?>
+    </footer>
 
 </body>
 

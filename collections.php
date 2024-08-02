@@ -73,29 +73,13 @@ if (!$isLoggedIn) {
             </div>
         </div>
 
-        <div class="section-header2">
-            <h1>What are customers saying</h1>
-        </div>
+         <!-- No Products Message -->
+         <div class="no-products-message" style="display: none;">
+                <p>No products matching your criteria were found. Please try adjusting your filters or check back later.</p>
+            </div>
 
-        <div class="content-container">
-            <div class="content-card">
-                <h4>So adorable!</h4>
-                <p>“This is truly such a beautiful fair trade product for quite a reasonable price. I love the way this garland looks on my mantle, hanging over my stone fireplace. I am going to buy one for the office because it brings me so much joy.” </p>
-                <p>Suzette Marechal</p>
-            </div>
-            <div class="content-card">
-                <h4>Short Wool Booties</h4>
-                <p>"I live in a cold Winter State. I am a street shoe size 7.5 - 8. These are very warm, fit great and could possibly fit size 10 foot. The ankle area has not stretched out and stays snug to my ankle. These are very well made and the yarn is durable. I plan to” </p>
-                <p>DW Booker</p>
-            </div>
-            <div class="content-card">
-                <h4>Very happy with the bracelet!</h4>
-                <p>“This was a Christmas gift for our daughter-in-law. She was thrilled to receive it! She enjoys wearing multiple bracelets; we look forward to seeing her mis with this one!” </p>
-                <p>Sarah Snailum</p>
-            </div>
-        </div>
-    </main>
-    <script src="js/florist.js"></script>
+
+    <script src="js/script.js"></script>
     <!--Footer-->
     <footer>
         <table>
