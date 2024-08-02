@@ -151,6 +151,39 @@ INSERT INTO `collections` VALUES (1,'Holiday Specials','Special products for the
 UNLOCK TABLES;
 
 --
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orders` (
+  `order_id` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL,
+  `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `total_amount` decimal(10,2) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `payment_method` varchar(50) DEFAULT NULL,
+  `shipping_address` varchar(255) DEFAULT NULL,
+  `billing_address` varchar(255) DEFAULT NULL,
+  `additional_notes` text,
+  PRIMARY KEY (`order_id`),
+  KEY `id` (`id`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,1,'2024-08-02 07:57:48',20.10,'pending','credit_card','dscdsaf','dfdsf','dfdsf'),(2,1,'2024-08-02 08:00:24',20.10,'pending','credit_card','dsfds','dfdsaf','dsda'),(3,1,'2024-08-02 08:03:13',20.10,'pending','credit_card','dsfds','dfdsaf','dsda'),(4,1,'2024-08-02 08:09:25',20.10,'pending','paypal','dsfdf','dsfdf','dsf'),(5,1,'2024-08-02 08:12:53',0.00,'pending','paypal','efdf','dfdf','adfdff'),(6,1,'2024-08-02 08:15:44',0.00,'pending','credit_card','dassd','dsaf','dsaf'),(7,1,'2024-08-02 08:16:46',49.99,'pending','credit_card','45 Slobodian Avenue, EIGHT MILE PLAINS QLD 4113','test address','dasfds'),(8,1,'2024-08-02 08:20:59',90.10,'pending','credit_card','test','tetts','tets');
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `products`
 --
 
@@ -212,6 +245,33 @@ CREATE TABLE `reviews` (
 LOCK TABLES `reviews` WRITE;
 /*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
 /*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ticket`
+--
+
+DROP TABLE IF EXISTS `ticket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ticket` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ticket`
+--
+
+LOCK TABLES `ticket` WRITE;
+/*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
+INSERT INTO `ticket` VALUES (1,'Lydia Karungi','lydiakarungi43@gmail.com','testing','2024-08-02 04:51:34');
+/*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -286,7 +346,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,7 +355,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'karungilydia92@gmail.com','123','2024-07-15 00:37:43'),(2,'cpetrus@uspf.edu.ph','Chyndee123','2024-07-15 07:25:04'),(3,'sasikumarh24@gmail.com','123456','2024-07-22 05:35:09'),(4,'lydiakarungi43@gmail.com','$2y$10$GAu8Rg/4VzMkn.K.LLBt3utdBC8p5U0uuDyno9YLWO3w.rUuPWbXS','2024-07-28 08:49:50'),(5,'lydiakarungi42@gmail.com','$2y$10$S.Oze2XYmuzMUxrCtlekjObAGfhr71cnXXbeZtsURxV2.zqQY885.','2024-07-28 11:39:19'),(6,'lydiakarungi45@gmail.com','$2y$10$Tv5S4BEgjwVg94Q0VJ7hU.hRcv4VpyXehFfFHqtutox4nQWR30oAW','2024-07-28 11:39:54'),(7,'lydiakarungi44@gmail.com','$2y$10$Nk2My5haiwwR5oioelqHQuXckfghySabuuEICWyg.NZS2SaTzKjly','2024-07-28 11:42:43'),(8,'lydiakarungi40@gmail.com','$2y$10$BvyzTzyk262T4FM4sinerOa1a/YGxZPeY6k/gl66J38bY3aq4nicS','2024-07-28 11:43:41'),(9,'lydiakarungi4@gmail.com','$2y$10$iAYjOPSkaqB6kchCUciYJ.SYTN2F8tgqRzutsVdmOj2bofwoftrUW','2024-07-28 11:44:39'),(10,'lydiakarungi3@gmail.com','$2y$10$1S.hqpxfKClpgG5QQf6qEe09vQVR70kDNBjCEYUo0qTti5Pwk8DLK','2024-07-28 11:44:58');
+INSERT INTO `users` VALUES (1,'karungilydia92@gmail.com','123','2024-07-15 00:37:43'),(2,'cpetrus@uspf.edu.ph','Chyndee123','2024-07-15 07:25:04'),(3,'sasikumarh24@gmail.com','123456','2024-07-22 05:35:09'),(4,'lydiakarungi43@gmail.com','$2y$10$GAu8Rg/4VzMkn.K.LLBt3utdBC8p5U0uuDyno9YLWO3w.rUuPWbXS','2024-07-28 08:49:50'),(5,'lydiakarungi42@gmail.com','$2y$10$S.Oze2XYmuzMUxrCtlekjObAGfhr71cnXXbeZtsURxV2.zqQY885.','2024-07-28 11:39:19'),(6,'lydiakarungi45@gmail.com','$2y$10$Tv5S4BEgjwVg94Q0VJ7hU.hRcv4VpyXehFfFHqtutox4nQWR30oAW','2024-07-28 11:39:54'),(7,'lydiakarungi44@gmail.com','$2y$10$Nk2My5haiwwR5oioelqHQuXckfghySabuuEICWyg.NZS2SaTzKjly','2024-07-28 11:42:43'),(8,'lydiakarungi40@gmail.com','$2y$10$BvyzTzyk262T4FM4sinerOa1a/YGxZPeY6k/gl66J38bY3aq4nicS','2024-07-28 11:43:41'),(9,'lydiakarungi4@gmail.com','$2y$10$iAYjOPSkaqB6kchCUciYJ.SYTN2F8tgqRzutsVdmOj2bofwoftrUW','2024-07-28 11:44:39'),(10,'lydiakarungi3@gmail.com','$2y$10$1S.hqpxfKClpgG5QQf6qEe09vQVR70kDNBjCEYUo0qTti5Pwk8DLK','2024-07-28 11:44:58'),(11,'lydiakarungi+testing43@gmail.com','$2y$10$tdYTOSAPGBDJX2el7nlZiORlS67P5jUiytA7zC/lY1M6cCoYAje8q','2024-08-02 05:13:18'),(12,'lydiakarungi434243@gmail.com','$2y$10$Ty1ccPeQ1zhfPMqmsT9Au.daCgXJu4jbErED6rg5vEznsT2U4KEFi','2024-08-02 05:16:48'),(13,'karungilydia923434@gmail.com','testing','2024-08-02 05:19:25');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -308,4 +368,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-28 22:13:42
+-- Dump completed on 2024-08-02 15:34:46

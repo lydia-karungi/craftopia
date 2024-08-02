@@ -24,7 +24,10 @@ if ($conn->connect_error) {
 
 // Get the email and password from POST
 $email = $_POST['email'];
-$originalPassword = $_POST['password']; // Store the original password
+$plainPassword = $_POST['password']; // Store the original password
+
+// Hash the password
+$hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT);
 
 // Check if the email already exists
 $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
@@ -38,7 +41,7 @@ if ($result->num_rows > 0) {
 } else {
     // Insert the new user into the database
     $stmt = $conn->prepare("INSERT INTO users (email, password) VALUES (?, ?)");
-    $stmt->bind_param("ss", $email, $originalPassword);
+    $stmt->bind_param("ss", $email, $hashedPassword);
     if ($stmt->execute()) {
         // Set session variables and log the user in
         $_SESSION['user_id'] = $stmt->insert_id;
