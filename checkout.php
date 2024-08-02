@@ -33,7 +33,7 @@
         .checkout-container select {
             width: 100%;
             padding: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
@@ -42,6 +42,13 @@
         .checkout-container select.error,
         .checkout-container textarea.error {
             border-color: red;
+        }
+
+        .checkout-container .error-message {
+            color: red;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: none; /* Initially hide error messages */
         }
 
         .checkout-container button {
@@ -97,15 +104,19 @@
             <form id="checkoutForm" method="POST">
                 <label for="name">Name on Card</label>
                 <input type="text" id="name" name="name" required>
+                <span class="error-message" id="nameError">Please enter the name on the card.</span>
 
                 <label for="cardNumber">Card Number</label>
                 <input type="text" id="cardNumber" name="cardNumber" maxlength="19" required>
+                <span class="error-message" id="cardNumberError">Please enter a valid card number.</span>
 
                 <label for="expiryDate">Expiry Date (MM/YY)</label>
                 <input type="text" id="expiryDate" name="expiryDate" pattern="(0[1-9]|1[0-2])\/?([0-9]{2})" required>
+                <span class="error-message" id="expiryDateError">Please enter a valid expiry date (MM/YY).</span>
 
                 <label for="cvv">CVV</label>
                 <input type="number" id="cvv" name="cvv" max="999" required>
+                <span class="error-message" id="cvvError">Please enter a valid CVV.</span>
 
                 <label for="paymentMethod">Payment Method</label>
                 <select id="paymentMethod" name="paymentMethod" required>
@@ -114,12 +125,15 @@
                     <option value="paypal">PayPal</option>
                     <option value="bank_transfer">Bank Transfer</option>
                 </select>
+                <span class="error-message" id="paymentMethodError">Please select a payment method.</span>
 
                 <label for="shippingAddress">Shipping Address</label>
                 <input type="text" id="shippingAddress" name="shippingAddress" required>
+                <span class="error-message" id="shippingAddressError">Please enter the shipping address.</span>
 
                 <label for="billingAddress">Billing Address</label>
                 <input type="text" id="billingAddress" name="billingAddress" required>
+                <span class="error-message" id="billingAddressError">Please enter the billing address.</span>
 
                 <label for="additionalNotes">Additional Notes</label>
                 <textarea id="additionalNotes" name="additionalNotes" rows="4"></textarea>
@@ -131,9 +145,9 @@
         </div>
         <div class="message-box" id="message-box">Payment successful! Redirecting to home page...</div>
     </main>
-
+    <!--Footer-->
     <footer>
-        <!-- Footer content -->
+        <?php include 'footer.php'; ?>
     </footer>
 
     <script>
@@ -161,6 +175,8 @@
                 event.preventDefault(); // Prevent default form submission
                 // Client-side validation
                 let valid = true;
+
+                // Form fields
                 const name = document.getElementById('name');
                 const cardNumber = document.getElementById('cardNumber');
                 const expiryDate = document.getElementById('expiryDate');
@@ -169,14 +185,27 @@
                 const shippingAddress = document.getElementById('shippingAddress');
                 const billingAddress = document.getElementById('billingAddress');
 
-                // Clear previous error classes
+                // Error message elements
+                const nameError = document.getElementById('nameError');
+                const cardNumberError = document.getElementById('cardNumberError');
+                const expiryDateError = document.getElementById('expiryDateError');
+                const cvvError = document.getElementById('cvvError');
+                const paymentMethodError = document.getElementById('paymentMethodError');
+                const shippingAddressError = document.getElementById('shippingAddressError');
+                const billingAddressError = document.getElementById('billingAddressError');
+
+                // Clear previous errors
                 [name, cardNumber, expiryDate, cvv, paymentMethod, shippingAddress, billingAddress].forEach(input => {
                     input.classList.remove('error');
+                });
+                [nameError, cardNumberError, expiryDateError, cvvError, paymentMethodError, shippingAddressError, billingAddressError].forEach(errorMsg => {
+                    errorMsg.style.display = 'none';
                 });
 
                 // Name validation
                 if (name.value.trim() === '') {
                     name.classList.add('error');
+                    nameError.style.display = 'block';
                     valid = false;
                 }
 
@@ -184,6 +213,7 @@
                 const cardNumberPattern = /^[0-9]{16}$/;
                 if (!cardNumberPattern.test(cardNumber.value.replace(/\s+/g, ''))) {
                     cardNumber.classList.add('error');
+                    cardNumberError.style.display = 'block';
                     valid = false;
                 }
 
@@ -191,30 +221,35 @@
                 const expiryDatePattern = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
                 if (!expiryDatePattern.test(expiryDate.value)) {
                     expiryDate.classList.add('error');
+                    expiryDateError.style.display = 'block';
                     valid = false;
                 }
 
                 // CVV validation
                 if (cvv.value.length !== 3) {
                     cvv.classList.add('error');
+                    cvvError.style.display = 'block';
                     valid = false;
                 }
 
                 // Payment method validation
                 if (paymentMethod.value === '') {
                     paymentMethod.classList.add('error');
+                    paymentMethodError.style.display = 'block';
                     valid = false;
                 }
 
                 // Shipping address validation
                 if (shippingAddress.value.trim() === '') {
                     shippingAddress.classList.add('error');
+                    shippingAddressError.style.display = 'block';
                     valid = false;
                 }
 
                 // Billing address validation
                 if (billingAddress.value.trim() === '') {
                     billingAddress.classList.add('error');
+                    billingAddressError.style.display = 'block';
                     valid = false;
                 }
 
@@ -233,17 +268,28 @@
                             // Clear the cart
                             localStorage.removeItem('cart');
                             // Display success message
+                            messageBox.textContent = 'Payment successful! Redirecting to home page...';
+                            messageBox.style.backgroundColor = '#d4edda'; // Green background for success
+                            messageBox.style.color = '#155724'; // Dark green text
                             messageBox.style.display = 'block';
                             // Redirect to the index page after a short delay
                             setTimeout(() => {
                                 window.location.href = 'index.php';
                             }, 2000);
                         } else {
-                            alert('There was an issue placing the order. Please try again.');
+                            // Display error message
+                            messageBox.textContent = 'There was an issue placing the order. Please try again.';
+                            messageBox.style.backgroundColor = '#f8d7da'; // Red background for error
+                            messageBox.style.color = '#721c24'; // Dark red text
+                            messageBox.style.display = 'block';
                         }
                     })
                     .catch(error => {
                         console.error('Error:', error);
+                        messageBox.textContent = 'An error occurred. Please try again.';
+                        messageBox.style.backgroundColor = '#f8d7da'; // Red background for error
+                        messageBox.style.color = '#721c24'; // Dark red text
+                        messageBox.style.display = 'block';
                     });
                 }
             });

@@ -64,48 +64,19 @@ if (!$isLoggedIn) {
             <div class="content-container" id="product-list">
                 <!-- Products will be dynamically inserted here -->
             </div>
+
+             <!-- No Products Message -->
+             <div class="no-products-message" style="display: none;">
+                <p>No products matching your criteria were found. Please try adjusting your filters or check back later.</p>
+            </div>
         </div>
     </main>
 
-    <script src="js/florist.js"></script>
+    <script src="js/script.js"></script>
     <!--Footer-->
     <footer>
-        <table>
-            <tr>
-                <td class="footer-column">
-                    <h1>Important Links</h1>
-                    <div class="social-media">
-                        <p>Our Shop</p>
-                        <p>Collections</p>
-                        <p>Gifts</p>
-                        <p>About Us</p>
-                    </div>
-                </td>
-                <td class="footer-column">
-                    <h1>Contact Us</h1>
-                    <div class="social-media">
-                        <p>Phone: 07 4779 1243</p>
-                        <p>fax: 4779 1244</p>
-                        <p>address: 223 queen St in Brisbane, Queensland</p>
-                        <p><a href="mailto:craftopia@craftopiamail.com.au"
-                                style="text-decoration: none; color: #aaa;">email:
-                                craftopia@craftopiamail.com.au</a></p>
-                    </div>
-                </td>
-                <td class="footer-column">
-                    <h1>Trading hours</h1>
-                    <div class="social-media">
-                        <p>Mon – Fri : 9.00 am to 4.00 pm</p>
-                        <p>Saturday – Sunday : 9.00 am to 12.00 pm</p>
-                    </div>
-                </td>
-            </tr>
-        </table>
+<?php include 'footer.php'; ?>
     </footer>
-
-    <div class="copyright-outside-footer">
-        &copy; COPYRIGHT 2024, CRAFTOPIA INC
-    </div>
 
 </body>
 
