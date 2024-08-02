@@ -28,12 +28,20 @@
 
         .checkout-container input[type="text"],
         .checkout-container input[type="number"],
-        .checkout-container input[type="email"] {
+        .checkout-container input[type="email"],
+        .checkout-container textarea,
+        .checkout-container select {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #ddd;
             border-radius: 4px;
+        }
+
+        .checkout-container input.error,
+        .checkout-container select.error,
+        .checkout-container textarea.error {
+            border-color: red;
         }
 
         .checkout-container button {
@@ -86,18 +94,37 @@
                 <p id="total-items">Total items: 0</p>
                 <p id="total-price">Total price: $0.00</p>
             </div>
-            <form id="checkoutForm">
+            <form id="checkoutForm" method="POST">
                 <label for="name">Name on Card</label>
                 <input type="text" id="name" name="name" required>
 
                 <label for="cardNumber">Card Number</label>
-                <input type="text" id="cardNumber" name="cardNumber" required>
+                <input type="text" id="cardNumber" name="cardNumber" maxlength="19" required>
 
                 <label for="expiryDate">Expiry Date (MM/YY)</label>
-                <input type="text" id="expiryDate" name="expiryDate" required>
+                <input type="text" id="expiryDate" name="expiryDate" pattern="(0[1-9]|1[0-2])\/?([0-9]{2})" required>
 
                 <label for="cvv">CVV</label>
-                <input type="number" id="cvv" name="cvv" required>
+                <input type="number" id="cvv" name="cvv" max="999" required>
+
+                <label for="paymentMethod">Payment Method</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="credit_card">Credit Card</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="bank_transfer">Bank Transfer</option>
+                </select>
+
+                <label for="shippingAddress">Shipping Address</label>
+                <input type="text" id="shippingAddress" name="shippingAddress" required>
+
+                <label for="billingAddress">Billing Address</label>
+                <input type="text" id="billingAddress" name="billingAddress" required>
+
+                <label for="additionalNotes">Additional Notes</label>
+                <textarea id="additionalNotes" name="additionalNotes" rows="4"></textarea>
+
+                <input type="hidden" id="totalAmount" name="totalAmount"> <!-- Hidden input for total amount -->
 
                 <button type="submit">Submit Payment</button>
             </form>
@@ -106,37 +133,7 @@
     </main>
 
     <footer>
-    <table>
-            <tr>
-                <td class="footer-column">
-                    <h1>Important Links</h1>
-                    <div class="social-media">
-                        <p>Our Shop</p>
-                        <p>Collections</p>
-                        <p>Gifts</p>
-                        <p>About Us</p>
-                    </div>
-                </td>
-                <td class="footer-column">
-                    <h1>Contact Us</h1>
-                    <div class="social-media">
-                        <p>Phone: 07 4779 1243</p>
-                        <p>fax: 4779 1244</p>
-                        <p>address: 223 queen St in Brisbane, Queensland</p>
-                        <p><a href="mailto:craftopia@craftopiamail.com.au"
-                                style="text-decoration: none; color: #aaa;">email:
-                                craftopia@craftopiamail.com.au</a></p>
-                    </div>
-                </td>
-                <td class="footer-column">
-                    <h1>Trading hours</h1>
-                    <div class="social-media">
-                        <p>Mon – Fri : 9.00 am to 4.00 pm</p>
-                        <p>Saturday – Sunday : 9.00 am to 12.00 pm</p>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <!-- Footer content -->
     </footer>
 
     <script>
@@ -145,6 +142,7 @@
             const totalPriceElement = document.getElementById('total-price');
             const messageBox = document.getElementById('message-box');
             const checkoutForm = document.getElementById('checkoutForm');
+            const totalAmountInput = document.getElementById('totalAmount');
 
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             let totalItems = 0;
@@ -157,14 +155,97 @@
 
             totalItemsElement.textContent = `Total items: ${totalItems}`;
             totalPriceElement.textContent = `Total price: $${totalPrice.toFixed(2)}`;
+            totalAmountInput.value = totalPrice.toFixed(2); // Set the total amount in the hidden input
 
             checkoutForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                // Display the success message and redirect to home page
-                messageBox.style.display = 'block';
-                setTimeout(() => {
-                    window.location.href = 'index.php';
-                }, 2000);
+                event.preventDefault(); // Prevent default form submission
+                // Client-side validation
+                let valid = true;
+                const name = document.getElementById('name');
+                const cardNumber = document.getElementById('cardNumber');
+                const expiryDate = document.getElementById('expiryDate');
+                const cvv = document.getElementById('cvv');
+                const paymentMethod = document.getElementById('paymentMethod');
+                const shippingAddress = document.getElementById('shippingAddress');
+                const billingAddress = document.getElementById('billingAddress');
+
+                // Clear previous error classes
+                [name, cardNumber, expiryDate, cvv, paymentMethod, shippingAddress, billingAddress].forEach(input => {
+                    input.classList.remove('error');
+                });
+
+                // Name validation
+                if (name.value.trim() === '') {
+                    name.classList.add('error');
+                    valid = false;
+                }
+
+                // Card number validation (basic Luhn's algorithm check can be added)
+                const cardNumberPattern = /^[0-9]{16}$/;
+                if (!cardNumberPattern.test(cardNumber.value.replace(/\s+/g, ''))) {
+                    cardNumber.classList.add('error');
+                    valid = false;
+                }
+
+                // Expiry date validation
+                const expiryDatePattern = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
+                if (!expiryDatePattern.test(expiryDate.value)) {
+                    expiryDate.classList.add('error');
+                    valid = false;
+                }
+
+                // CVV validation
+                if (cvv.value.length !== 3) {
+                    cvv.classList.add('error');
+                    valid = false;
+                }
+
+                // Payment method validation
+                if (paymentMethod.value === '') {
+                    paymentMethod.classList.add('error');
+                    valid = false;
+                }
+
+                // Shipping address validation
+                if (shippingAddress.value.trim() === '') {
+                    shippingAddress.classList.add('error');
+                    valid = false;
+                }
+
+                // Billing address validation
+                if (billingAddress.value.trim() === '') {
+                    billingAddress.classList.add('error');
+                    valid = false;
+                }
+
+                if (!valid) {
+                    alert('Please fill in all required fields correctly.');
+                } else {
+                    // Submit the form via AJAX
+                    const formData = new FormData(checkoutForm);
+                    fetch('fetch_products.php', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then(response => response.text())
+                    .then(responseText => {
+                        if (responseText.includes('Order placed successfully!')) {
+                            // Clear the cart
+                            localStorage.removeItem('cart');
+                            // Display success message
+                            messageBox.style.display = 'block';
+                            // Redirect to the index page after a short delay
+                            setTimeout(() => {
+                                window.location.href = 'index.php';
+                            }, 2000);
+                        } else {
+                            alert('There was an issue placing the order. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                }
             });
         });
     </script>
