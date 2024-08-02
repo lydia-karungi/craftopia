@@ -93,18 +93,15 @@ $isLoggedIn = isset($_SESSION['user_id']);
 
     <!--Banner image-->
     <main>
-        <div class="banner">
-            <img src="florist_images/karim-manjra-cW3nDFVpi10-unsplash.jpg" alt="banner">
-            <div class="cta">
-                <h1>Find the perfect gift</h1>
-                <h2>Find your favorite crafts</h2>
-                <form id="searchForm">
-                    <input type="text" id="flowerName" name="flowerName" placeholder="Enter crafts name" required>
-                    <input type="text" id="price" name="price" placeholder="Enter price" required>
-                    <button type="submit">SHOP NOW</button>
-                </form>
-            </div>
+    <div class="banner">
+        <img src="product_images/karim-manjra-cW3nDFVpi10-unsplash.jpg" alt="banner">
+        <div class="cta">
+            <h1>Discover Unique Crafts</h1>
+            <h2>Handmade, Authentic, and One-of-a-Kind</h2>
+            <p>Explore our exclusive collection of artisanal crafts, perfect for any occasion. Whether you're looking for a special gift or something unique for your home, we have something for everyone.</p>
+            <a href="collections.php" class="cta-button">Shop Now</a>
         </div>
+    </div>
 
         <!--Best sellers-->
         <div class="section-header1">

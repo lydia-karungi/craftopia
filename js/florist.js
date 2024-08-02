@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Existing code...
+
     const mainElement = document.querySelector('main');
     const category = mainElement.getAttribute('data-category');  // Get the preselected category from the main element
 
@@ -6,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('fetch_products.php?' + params.toString())
             .then(response => response.json())
             .then(products => {
+                // Existing product fetching and display logic...
+
                 const bestSellersContainer = document.getElementById('best-sellers');
                 const shopByCategoryContainer = document.getElementById('shop-by-category');
                 const productList = document.getElementById('product-list');
@@ -266,5 +270,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
         updateCart();
     }
-});
 
+    // Add new login functionality
+    const loginForm = document.getElementById('loginForm');
+    const errorMessage = document.getElementById('errorMessage');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Create FormData object and send it via AJAX
+            const formData = new FormData(loginForm);
+            fetch('login.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    displayMessage('Login successful! Redirecting...');
+                    setTimeout(() => {
+                        window.location.href = 'index.php'; // Redirect to home page on success
+                    }, 2000);
+                } else {
+                    errorMessage.textContent = data.message; // Display error message
+                    errorMessage.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                errorMessage.textContent = 'An error occurred. Please try again.';
+                errorMessage.style.display = 'block';
+            });
+        });
+    }
+});
