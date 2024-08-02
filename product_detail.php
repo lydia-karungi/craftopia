@@ -1,3 +1,17 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
+
+if (!$isLoggedIn) {
+    header("Location: login.html"); // Redirect to the login page
+    exit(); // Stop further execution to prevent loading the cart page content
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

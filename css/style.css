@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #D2B48C;;
+    background-color: #D2B48C;
     text-align: center;
     color: white;
     padding: 10px;
@@ -62,17 +62,8 @@ header {
     text-decoration: none;
 }
 
-.nav-bar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
 .main-menu ul {
     margin-right: 130px;
-
 }
 
 .main-menu ul li {
@@ -81,7 +72,8 @@ header {
     font-family: "Noto Serif", serif;
 }
 
-.main-menu ul li a:hover {
+.main-menu ul li a:hover,
+.nav-bar ul li a:hover {
     color: #b95950;
 }
 
@@ -97,10 +89,8 @@ header {
     margin-right: 20px;
     position: relative;
     font-family: "Noto Serif", serif;
-}
-
-.nav-bar ul li a:hover {
-    color: #b95950;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .nav-bar ul li ul {
@@ -125,23 +115,12 @@ header {
     background-color: #f1f1f1;
 }
 
-.nav-bar ul li {
-    margin-right: 20px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
-.nav-bar {
-    margin-top: 20px;
-}
-
 .nav-bar ul li a,
 .main-menu ul li a {
     text-decoration: none;
     color: black;
     font-size: 20px;
 }
-
 
 .shopping {
     background-color: #bf2e1a;
@@ -179,74 +158,44 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: left;
+    text-align: center;
     color: black;
-    background-color: rgb(228, 223, 223);
-    padding: 50px;
-    border-radius: 20px;
-
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 600px;
 }
 
 .cta h1 {
     font-size: 2.5rem;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    text-align: center;
+    margin-bottom: 10px;
 }
 
 .cta h2 {
     font-size: 1.5rem;
-    margin-top: 5px;
     margin-bottom: 20px;
-
 }
 
 .cta p {
     color: #333;
     font-size: 16px;
     line-height: 1.6;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: left;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 20px;
 }
 
-.cta form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.cta input[type="text"],
-.cta input[type="date"] {
-    width: 100%;
-}
-
-.cta input[type="text"],
-.cta input[type="date"],
-.cta button {
-    padding: 15px;
-    margin-right: 10px;
-    border: 1px solid;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-.cta button {
-    margin-top: -10px;
+.cta a.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
     background-color: #bf2e1a;
     color: white;
-    cursor: pointer;
-    width: 70%;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-.cta button:hover {
+.cta a.cta-button:hover {
     background-color: #b95950;
 }
 
@@ -259,8 +208,7 @@ header {
     text-align: center;
 }
 
-h1,
-h2 {
+h1, h2 {
     font-family: "Dancing Script", cursive;
 }
 
@@ -308,7 +256,6 @@ footer .social-media {
     bottom: 0;
     width: 100%;
 }
-
 
 .contact-cards-container {
     display: flex;
@@ -383,8 +330,8 @@ footer .social-media {
 }
 
 .content-card h4 {
-     margin-top: 10px;
-    font-size: 18px; 
+    margin-top: 10px;
+    font-size: 18px;
 }
 
 .content-card p {
@@ -411,7 +358,7 @@ footer .social-media {
     transform: translateX(-50%);
     padding: 10px 20px;
     border: none;
-    background-color:  #bf2e1a;
+    background-color: #bf2e1a;
     color: white;
     font-size: 16px;
     border-radius: 5px;
@@ -422,7 +369,6 @@ footer .social-media {
 .add-to-cart-btn:hover {
     background-color: #b95950;
 }
-
 
 .container {
     width: 50%;
@@ -437,8 +383,7 @@ h2 {
     text-align: center;
 }
 
-label,
-input {
+label, input {
     display: block;
     margin-bottom: 10px;
 }
@@ -477,9 +422,7 @@ input[type="submit"]:hover {
     z-index: 100;
 }
 
-
 @media (max-width: 480px) {
-
     .section-header1 {
         margin-top: -169px;
         text-align: center;
@@ -487,11 +430,7 @@ input[type="submit"]:hover {
 
     .hamburger {
         display: block;
-        background: none;
-        border: none;
-        color: #333;
         font-size: 2rem;
-        position: absolute;
         top: 20px;
         left: 20px;
         z-index: 100;
@@ -591,7 +530,7 @@ input[type="submit"]:hover {
         max-width: 600px;
         margin: 20px auto;
         padding: 20px;
-        background-color: rgba(228, 223, 223, 0.9);
+        background-color: rgba(255, 255, 255, 0.9);
         text-align: center;
         border-radius: 10px;
     }
@@ -599,23 +538,6 @@ input[type="submit"]:hover {
     .cta h1,
     .cta h2 {
         font-size: 1.4rem;
-    }
-
-    .cta form {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .cta input[type="text"],
-    .cta input[type="date"],
-    .cta button {
-        width: 100%;
-        margin-top: 10px;
-        padding: 12px;
-    }
-
-    .cta button {
-        margin-top: 20px;
     }
 
     .content-container .content-card {
@@ -692,19 +614,12 @@ input[type="submit"]:hover {
     .add-to-cart-btn {
         left: 38%;
     }
-
-
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-
     .hamburger {
         display: block;
-        background: none;
-        border: none;
-        color: #333;
         font-size: 2rem;
-        position: absolute;
         top: 20px;
         left: 20px;
         z-index: 100;
@@ -806,14 +721,13 @@ input[type="submit"]:hover {
         text-align: center;
     }
 
-
     .cta {
         position: relative;
         width: 90%;
         max-width: 600px;
         margin-top: -130px;
         padding: 20px;
-        background-color: rgba(228, 223, 223, 0.9);
+        background-color: rgba(255, 255, 255, 0.9);
         text-align: center;
         border-radius: 10px;
     }
@@ -851,18 +765,12 @@ input[type="submit"]:hover {
     .add-to-cart-btn {
         left: 20%;
     }
-
 }
-
 
 @media (min-width: 769px) and (max-width: 1024px) {
     .hamburger {
         display: block;
-        background: none;
-        border: none;
-        color: #333;
         font-size: 2rem;
-        position: absolute;
         top: 20px;
         left: 20px;
         z-index: 100;
@@ -949,7 +857,7 @@ input[type="submit"]:hover {
         max-width: 600px;
         margin-top: -130px;
         padding: 20px;
-        background-color: rgba(228, 223, 223, 0.9);
+        background-color: rgba(255, 255, 255, 0.9);
         text-align: center;
         border-radius: 10px;
     }

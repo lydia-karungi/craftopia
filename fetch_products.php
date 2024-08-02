@@ -20,8 +20,8 @@ if ($conn->connect_error) {
 }
 
 // Handle form submission for order
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get form data
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['cardNumber'])) {
+    // Get form data for order
     $name = $_POST['name'];
     $cardNumber = $_POST['cardNumber'];
     $expiryDate = $_POST['expiryDate'];
@@ -36,20 +36,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // This should be replaced with the actual method of getting the user id
     $id = 1; // Dummy id, replace with actual user session id
 
-    // Validate and sanitize input data
-    // Example: $name = $conn->real_escape_string($name);
-
     // Insert order into database
     $stmt = $conn->prepare("INSERT INTO orders (id, order_date, total_amount, status, payment_method, shipping_address, billing_address, additional_notes) VALUES (?, NOW(), ?, 'pending', ?, ?, ?, ?)");
     $stmt->bind_param("idssss", $id, $totalAmount, $paymentMethod, $shippingAddress, $billingAddress, $additionalNotes);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-        // Output success message and stop script execution
         echo "Order placed successfully!";
     } else {
-        // Output error message and stop script execution
         echo "Error placing order: " . $stmt->error;
+    }
+
+    $stmt->close();
+    $conn->close();
+
+    // Stop further execution to prevent mixed output
+    exit;
+}
+
+// Handle form submission for ticket
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message'])) {
+    // Get form data for ticket
+    $ticketName = $_POST['name'];
+    $ticketEmail = $_POST['email'];
+    $ticketMessage = $_POST['message'];
+
+    // Insert ticket into database
+    $stmt = $conn->prepare("INSERT INTO ticket (name, email, message) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $ticketName, $ticketEmail, $ticketMessage);
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        echo "Ticket submitted successfully!";
+    } else {
+        echo "Error submitting ticket: " . $stmt->error;
     }
 
     $stmt->close();
