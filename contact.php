@@ -35,49 +35,23 @@
             </div>
             <div class="content-card">
                 <h4>Customer Service</h4>
-                <p>If you have any issues or inquiries, please fill out the form below, and our team will get back to you as soon as possible.</p>
+                <p>We are dedicated to providing you with the best possible experience. If you have any questions, concerns, or need assistance with your order, please don't hesitate to reach out. Fill out the form below with your details and a description of your inquiry, and our customer service team will respond promptly. Whether it's about product information, shipping, returns, or any other matter, we're here to help and ensure your satisfaction. Thank you for choosing Craftopia; we value your feedback and are committed to serving you better.</p>
             </div>
-
             <div class="content-card">
-                <h4>Contact Information</h4>
-                <p>Phone: 07 4779 1243</p>
-                <p>Fax: 4779 1244</p>
-                <p>223 Queen St, Brisbane, Queensland</p>
-                <p>Mail:<a href="mailto:craftopia@craftopiamail.com.au">craftopia@craftopiamail.com.au</a></p>
-            </div>
+    <h4>Contact Us</h4>
+    <p><strong>Phone:</strong> 07 4779 1243</p>
+    <p><strong>Fax:</strong> 4779 1244</p>
+    <p><strong>Address:</strong> 223 Queen St, Brisbane, Queensland</p>
+    <p><strong>Email:</strong> <a href="mailto:craftopia@craftopiamail.com.au">craftopia@craftopiamail.com.au</a></p>
+    <p>Have questions or need assistance? Don't hesitate to reach out! Our team is here to help you with any inquiries, big or small. Whether it's about your order, our products, or anything else, we're just a call or email away.</p>
+</div>
+
         </div>
     </main>
-    <footer>
-        <table>
-            <tr>
-                <td class="footer-column">
-                    <h1>Important Links</h1>
-                    <div class="social-media">
-                        <p>Our Shop</p>
-                        <p>Collections</p>
-                        <p>Gifts</p>
-                        <p>About Us</p>
-                    </div>
-                </td>
-                <td class="footer-column">
-                    <h1>Contact Us</h1>
-                    <div class="social-media">
-                        <p>Phone: 07 4779 1243</p>
-                        <p>Fax: 4779 1244</p>
-                        <p>Address: 223 Queen St in Brisbane, Queensland</p>
-                        <p><a href="mailto:craftopia@craftopiamail.com.au" style="text-decoration: none; color: #aaa;">craftopia@craftopiamail.com.au</a></p>
-                    </div>
-                </td>
-                <td class="footer-column">
-                    <h1>Trading hours</h1>
-                    <div class="social-media">
-                        <p>Mon – Fri : 9.00 am to 4.00 pm</p>
-                        <p>Saturday – Sunday : 9.00 am to 12.00 pm</p>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </footer>
+     <!-- Footer -->
+     <footer>
+    <?php include 'footer.php'; ?>
+</footer>
     <div class="copyright-outside-footer">
         &copy; COPYRIGHT 2024, CRAFTOPIA INC
     </div>

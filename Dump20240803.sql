@@ -16,62 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cart`
---
-
-DROP TABLE IF EXISTS `cart`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cart` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cart`
---
-
-LOCK TABLES `cart` WRITE;
-/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cart_items`
---
-
-DROP TABLE IF EXISTS `cart_items`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cart_items` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `cart_id` int DEFAULT NULL,
-  `product_id` int DEFAULT NULL,
-  `quantity` int NOT NULL DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `cart_id` (`cart_id`),
-  KEY `product_id` (`product_id`),
-  CONSTRAINT `cart_items_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `cart_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cart_items`
---
-
-LOCK TABLES `cart_items` WRITE;
-/*!40000 ALTER TABLE `cart_items` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cart_items` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `categories`
 --
 
@@ -170,7 +114,7 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`order_id`),
   KEY `id` (`id`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +123,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1,'2024-08-02 07:57:48',20.10,'pending','credit_card','dscdsaf','dfdsf','dfdsf'),(2,1,'2024-08-02 08:00:24',20.10,'pending','credit_card','dsfds','dfdsaf','dsda'),(3,1,'2024-08-02 08:03:13',20.10,'pending','credit_card','dsfds','dfdsaf','dsda'),(4,1,'2024-08-02 08:09:25',20.10,'pending','paypal','dsfdf','dsfdf','dsf'),(5,1,'2024-08-02 08:12:53',0.00,'pending','paypal','efdf','dfdf','adfdff'),(6,1,'2024-08-02 08:15:44',0.00,'pending','credit_card','dassd','dsaf','dsaf'),(7,1,'2024-08-02 08:16:46',49.99,'pending','credit_card','45 Slobodian Avenue, EIGHT MILE PLAINS QLD 4113','test address','dasfds'),(8,1,'2024-08-02 08:20:59',90.10,'pending','credit_card','test','tetts','tets'),(9,1,'2024-08-02 15:38:38',199.98,'pending','credit_card','uygyjg','jkghkg','jkgj'),(10,14,'2024-08-02 21:30:10',169.98,'pending','credit_card','zvdvdfv','dafvc','czxvcx');
+INSERT INTO `orders` VALUES (1,1,'2024-08-02 07:57:48',20.10,'pending','credit_card','dscdsaf','dfdsf','dfdsf'),(2,1,'2024-08-02 08:00:24',20.10,'pending','credit_card','dsfds','dfdsaf','dsda'),(3,1,'2024-08-02 08:03:13',20.10,'pending','credit_card','dsfds','dfdsaf','dsda'),(4,1,'2024-08-02 08:09:25',20.10,'pending','paypal','dsfdf','dsfdf','dsf'),(5,1,'2024-08-02 08:12:53',0.00,'pending','paypal','efdf','dfdf','adfdff'),(6,1,'2024-08-02 08:15:44',0.00,'pending','credit_card','dassd','dsaf','dsaf'),(7,1,'2024-08-02 08:16:46',49.99,'pending','credit_card','45 Slobodian Avenue, EIGHT MILE PLAINS QLD 4113','test address','dasfds'),(8,1,'2024-08-02 08:20:59',90.10,'pending','credit_card','test','tetts','tets'),(9,1,'2024-08-02 15:38:38',199.98,'pending','credit_card','uygyjg','jkghkg','jkgj'),(10,14,'2024-08-02 21:30:10',169.98,'pending','credit_card','zvdvdfv','dafvc','czxvcx'),(11,14,'2024-08-03 15:57:04',149.99,'pending','credit_card','test','test','test'),(12,14,'2024-08-03 16:01:12',70.00,'pending','bank_transfer','lydia','lydioa','lydia'),(13,15,'2024-08-03 16:14:15',20.10,'pending','credit_card','testing demo','testing demo','testing demo');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +174,7 @@ CREATE TABLE `reviews` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   CONSTRAINT `reviews_chk_1` CHECK ((`rating` between 1 and 5))
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +183,7 @@ CREATE TABLE `reviews` (
 
 LOCK TABLES `reviews` WRITE;
 /*!40000 ALTER TABLE `reviews` DISABLE KEYS */;
-INSERT INTO `reviews` VALUES (1,'Lydia karungi',5,'I recently purchased a beautiful handmade necklace from Craftopia, and I\'m absolutely in love with it! The craftsmanship is exceptional, and the design is unique. It arrived quickly and was beautifully packaged. Highly recommend this shop for anyone looking for quality, handcrafted items!\"','2024-08-02 07:51:12'),(2,'Brenda',3,'The handcrafted pottery I ordered was stunning and well-made. The attention to detail is impressive. My only gripe is that the shipping took a bit longer than expected, but it was worth the wait','2024-08-02 07:58:46'),(3,'Sasi',4,'I purchased a set of hand-painted mugs. While the artwork is beautiful, one of the mugs had a small chip upon arrival. Customer service was responsive and offered a partial refund. Overall, a decent experience.','2024-08-02 07:59:03'),(4,'Glenys',4,'I purchased a set of hand-painted mugs. While the artwork is beautiful, one of the mugs had a small chip upon arrival. Customer service was responsive and offered a partial refund. Overall, a decent experience.','2024-08-02 07:59:20'),(5,'Chyndee',2,'Ordered a handmade scarf, but the color was quite different from the picture on the website. The quality is good, but the color mismatch was disappointing. The return process was smooth, though.','2024-08-02 07:59:41'),(6,'John Doe',4,'I bought a handmade vase from Craftopia and it looks amazing in my living room. The craftsmanship is top-notch, and the colors are vibrant. It arrived well-packaged and on time. I\'m very happy with my purchase and will definitely shop here again!','2024-08-02 08:19:09'),(7,'Alice Smith',5,'Craftopia has such a unique collection of handmade items. I purchased a beautiful necklace for my friend\'s birthday, and she absolutely loved it. The quality is outstanding, and the customer service was excellent. Highly recommend!','2024-08-02 08:19:09'),(8,'Michael Brown',3,'I ordered a set of coasters. While they are beautiful and well-crafted, they arrived a bit later than expected. However, the quality is good, and they are a nice addition to my home. I might shop again in the future.','2024-08-02 08:19:09'),(9,'Emily Johnson',5,'I am thrilled with the custom-made jewelry box I ordered from Craftopia. It is exquisitely crafted and arrived faster than I anticipated. The customer service was very responsive and helpful throughout the process. Highly satisfied with my purchase!','2024-08-02 08:19:09'),(10,'David Wilson',4,'The wooden cutting board I purchased is of excellent quality. It\'s sturdy, well-designed, and perfect for my kitchen. The only minor issue was a slight delay in shipping, but the product itself is fantastic. Would recommend!','2024-08-02 08:19:09');
+INSERT INTO `reviews` VALUES (1,'Lydia karungi',5,'I recently purchased a beautiful handmade necklace from Craftopia, and I\'m absolutely in love with it! The craftsmanship is exceptional, and the design is unique. It arrived quickly and was beautifully packaged. Highly recommend this shop for anyone looking for quality, handcrafted items!\"','2024-08-02 07:51:12'),(2,'Brenda',3,'The handcrafted pottery I ordered was stunning and well-made. The attention to detail is impressive. My only gripe is that the shipping took a bit longer than expected, but it was worth the wait','2024-08-02 07:58:46'),(3,'Sasi',4,'I purchased a set of hand-painted mugs. While the artwork is beautiful, one of the mugs had a small chip upon arrival. Customer service was responsive and offered a partial refund. Overall, a decent experience.','2024-08-02 07:59:03'),(4,'Glenys',4,'I purchased a set of hand-painted mugs. While the artwork is beautiful, one of the mugs had a small chip upon arrival. Customer service was responsive and offered a partial refund. Overall, a decent experience.','2024-08-02 07:59:20'),(5,'Chyndee',2,'Ordered a handmade scarf, but the color was quite different from the picture on the website. The quality is good, but the color mismatch was disappointing. The return process was smooth, though.','2024-08-02 07:59:41'),(6,'John Doe',4,'I bought a handmade vase from Craftopia and it looks amazing in my living room. The craftsmanship is top-notch, and the colors are vibrant. It arrived well-packaged and on time. I\'m very happy with my purchase and will definitely shop here again!','2024-08-02 08:19:09'),(7,'Alice Smith',5,'Craftopia has such a unique collection of handmade items. I purchased a beautiful necklace for my friend\'s birthday, and she absolutely loved it. The quality is outstanding, and the customer service was excellent. Highly recommend!','2024-08-02 08:19:09'),(8,'Michael Brown',3,'I ordered a set of coasters. While they are beautiful and well-crafted, they arrived a bit later than expected. However, the quality is good, and they are a nice addition to my home. I might shop again in the future.','2024-08-02 08:19:09'),(9,'Emily Johnson',5,'I am thrilled with the custom-made jewelry box I ordered from Craftopia. It is exquisitely crafted and arrived faster than I anticipated. The customer service was very responsive and helpful throughout the process. Highly satisfied with my purchase!','2024-08-02 08:19:09'),(10,'David Wilson',4,'The wooden cutting board I purchased is of excellent quality. It\'s sturdy, well-designed, and perfect for my kitchen. The only minor issue was a slight delay in shipping, but the product itself is fantastic. Would recommend!','2024-08-02 08:19:09'),(11,'Lydia karungi',4,'testing demo','2024-08-03 05:55:08'),(12,'Lydia karungi',4,'test','2024-08-03 06:11:58');
 /*!40000 ALTER TABLE `reviews` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -257,7 +201,7 @@ CREATE TABLE `ticket` (
   `message` text NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -266,66 +210,8 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES (1,'Lydia Karungi','lydiakarungi43@gmail.com','testing','2024-08-02 04:51:34'),(2,'Lydia Karungi','karungilydia92@gmail.com','testing 4','2024-08-02 05:37:37');
+INSERT INTO `ticket` VALUES (1,'Lydia Karungi','lydiakarungi43@gmail.com','testing','2024-08-02 04:51:34'),(2,'Lydia Karungi','karungilydia92@gmail.com','testing 4','2024-08-02 05:37:37'),(3,'Lydia karungi','karungilydia92@gmail.com','testing','2024-08-03 05:50:58'),(4,'Lydia karungi','sasikumarh24@gmail.com','testing demo','2024-08-03 06:15:58');
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `transaction_items`
---
-
-DROP TABLE IF EXISTS `transaction_items`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `transaction_items` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `transaction_id` int DEFAULT NULL,
-  `product_id` int DEFAULT NULL,
-  `quantity` int NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `transaction_id` (`transaction_id`),
-  KEY `product_id` (`product_id`),
-  CONSTRAINT `transaction_items_ibfk_1` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `transaction_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `transaction_items`
---
-
-LOCK TABLES `transaction_items` WRITE;
-/*!40000 ALTER TABLE `transaction_items` DISABLE KEYS */;
-/*!40000 ALTER TABLE `transaction_items` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `transactions`
---
-
-DROP TABLE IF EXISTS `transactions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `transactions` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int DEFAULT NULL,
-  `total` decimal(10,2) NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `transactions`
---
-
-LOCK TABLES `transactions` WRITE;
-/*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -342,7 +228,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -351,7 +237,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'karungilydia92@gmail.com','123','2024-07-15 00:37:43'),(2,'cpetrus@uspf.edu.ph','Chyndee123','2024-07-15 07:25:04'),(3,'sasikumarh24@gmail.com','123456','2024-07-22 05:35:09'),(4,'lydiakarungi43@gmail.com','$2y$10$GAu8Rg/4VzMkn.K.LLBt3utdBC8p5U0uuDyno9YLWO3w.rUuPWbXS','2024-07-28 08:49:50'),(5,'lydiakarungi42@gmail.com','$2y$10$S.Oze2XYmuzMUxrCtlekjObAGfhr71cnXXbeZtsURxV2.zqQY885.','2024-07-28 11:39:19'),(6,'lydiakarungi45@gmail.com','$2y$10$Tv5S4BEgjwVg94Q0VJ7hU.hRcv4VpyXehFfFHqtutox4nQWR30oAW','2024-07-28 11:39:54'),(7,'lydiakarungi44@gmail.com','$2y$10$Nk2My5haiwwR5oioelqHQuXckfghySabuuEICWyg.NZS2SaTzKjly','2024-07-28 11:42:43'),(8,'lydiakarungi40@gmail.com','$2y$10$BvyzTzyk262T4FM4sinerOa1a/YGxZPeY6k/gl66J38bY3aq4nicS','2024-07-28 11:43:41'),(9,'lydiakarungi4@gmail.com','$2y$10$iAYjOPSkaqB6kchCUciYJ.SYTN2F8tgqRzutsVdmOj2bofwoftrUW','2024-07-28 11:44:39'),(10,'lydiakarungi3@gmail.com','$2y$10$1S.hqpxfKClpgG5QQf6qEe09vQVR70kDNBjCEYUo0qTti5Pwk8DLK','2024-07-28 11:44:58'),(11,'lydiakarungi+testing43@gmail.com','$2y$10$tdYTOSAPGBDJX2el7nlZiORlS67P5jUiytA7zC/lY1M6cCoYAje8q','2024-08-02 05:13:18'),(12,'lydiakarungi434243@gmail.com','$2y$10$Ty1ccPeQ1zhfPMqmsT9Au.daCgXJu4jbErED6rg5vEznsT2U4KEFi','2024-08-02 05:16:48'),(13,'karungilydia923434@gmail.com','testing','2024-08-02 05:19:25'),(14,'lydia+testhash@gmail.com','$2y$10$WYSZN3JMrv/DQKqSpplOdOSSAymJlw4mqzCAiOsf9tw7qIwQ7oLIq','2024-08-02 06:01:53');
+INSERT INTO `users` VALUES (1,'karungilydia92@gmail.com','123','2024-07-15 00:37:43'),(2,'cpetrus@uspf.edu.ph','Chyndee123','2024-07-15 07:25:04'),(3,'sasikumarh24@gmail.com','123456','2024-07-22 05:35:09'),(4,'lydiakarungi43@gmail.com','$2y$10$GAu8Rg/4VzMkn.K.LLBt3utdBC8p5U0uuDyno9YLWO3w.rUuPWbXS','2024-07-28 08:49:50'),(5,'lydiakarungi42@gmail.com','$2y$10$S.Oze2XYmuzMUxrCtlekjObAGfhr71cnXXbeZtsURxV2.zqQY885.','2024-07-28 11:39:19'),(6,'lydiakarungi45@gmail.com','$2y$10$Tv5S4BEgjwVg94Q0VJ7hU.hRcv4VpyXehFfFHqtutox4nQWR30oAW','2024-07-28 11:39:54'),(7,'lydiakarungi44@gmail.com','$2y$10$Nk2My5haiwwR5oioelqHQuXckfghySabuuEICWyg.NZS2SaTzKjly','2024-07-28 11:42:43'),(8,'lydiakarungi40@gmail.com','$2y$10$BvyzTzyk262T4FM4sinerOa1a/YGxZPeY6k/gl66J38bY3aq4nicS','2024-07-28 11:43:41'),(9,'lydiakarungi4@gmail.com','$2y$10$iAYjOPSkaqB6kchCUciYJ.SYTN2F8tgqRzutsVdmOj2bofwoftrUW','2024-07-28 11:44:39'),(10,'lydiakarungi3@gmail.com','$2y$10$1S.hqpxfKClpgG5QQf6qEe09vQVR70kDNBjCEYUo0qTti5Pwk8DLK','2024-07-28 11:44:58'),(11,'lydiakarungi+testing43@gmail.com','$2y$10$tdYTOSAPGBDJX2el7nlZiORlS67P5jUiytA7zC/lY1M6cCoYAje8q','2024-08-02 05:13:18'),(12,'lydiakarungi434243@gmail.com','$2y$10$Ty1ccPeQ1zhfPMqmsT9Au.daCgXJu4jbErED6rg5vEznsT2U4KEFi','2024-08-02 05:16:48'),(13,'karungilydia923434@gmail.com','testing','2024-08-02 05:19:25'),(14,'lydia+testhash@gmail.com','$2y$10$WYSZN3JMrv/DQKqSpplOdOSSAymJlw4mqzCAiOsf9tw7qIwQ7oLIq','2024-08-02 06:01:53'),(15,'lydia+testdemo@gmail.com','$2y$10$yBImBfDi22FIkq5GW4e6GOEn3GZorzzccTs7Bv1e44fvZu1wCUhdS','2024-08-03 06:12:58');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -364,4 +250,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-02 21:53:01
+-- Dump completed on 2024-08-03 17:05:16

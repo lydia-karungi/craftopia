@@ -212,6 +212,30 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Function to display a message to the user
+    function displayMessage(message) {
+        // Create a message box element
+        const messageBox = document.createElement('div');
+        messageBox.textContent = message;
+        messageBox.style.position = 'fixed';
+        messageBox.style.bottom = '20px';
+        messageBox.style.left = '50%';
+        messageBox.style.transform = 'translateX(-50%)';
+        messageBox.style.backgroundColor = 'white';
+        messageBox.style.color = 'green';
+        messageBox.style.padding = '10px 20px';
+        messageBox.style.borderRadius = '10px';
+        messageBox.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
+        messageBox.style.zIndex = '1000'; // Ensuring the message is above all other elements
+        document.body.appendChild(messageBox);
+
+        // Remove the message box after a short delay
+        setTimeout(() => {
+            messageBox.remove();
+        }, 2000); // 2 seconds
+    }
+
+
     function addToCart(product) {
         const cartItem = cart.find(item => item.id === product.id);
         if (cartItem) {
