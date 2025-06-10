@@ -6,17 +6,17 @@ Craftopia is an online shop built to showcase and sell a wide variety of local a
 
 ### 1. Clone the Repository
 
-git clone https://github.com/yourusername/craftopia.git
+git clone https://github.com/lydia-karungi/craftopia.git
 cd craftopia
 
 2. Set Up the MySQL Database
 
 Make sure MySQL is installed and running. Then:
-	•	Create a new database named craftopia_db
-	•	Import the schema:
- mysql -u root -p craftopia_db < database/schema.sql
+•Create a new database named craftopia_db
+•Import the schema:
+ 	mysql -u root -p craftopia_db < database/schema.sql
 
-	•	Update the database credentials in your config.php file:
+•Update the database credentials in your config.php file:
     $host = 'localhost';
     $dbname = 'craftopia_db';
     $username = 'root';
